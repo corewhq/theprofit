@@ -7,9 +7,13 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import Axios from 'axios'
 import config from './config'
+import store from './store/'
 
 Vue.config.productionTip = true;
+
 Vue.use(ElementUI);
+
+
 Vue.prototype.$http = Axios.create({
     baseURL: config.data.baseUrl
 });
@@ -19,6 +23,7 @@ Vue.prototype.$http = Axios.create({
 new Vue({
     el: '#app',
     router,
+    store,
     template: '<App/>',
     components: {App}
 });
