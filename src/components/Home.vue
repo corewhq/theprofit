@@ -1,8 +1,9 @@
 <template>
-    <div class="hello">
+    <div>
         <h1>{{ msg }}</h1>
         <h2>Essential Links</h2>
-        <h2>{{helloGet}}</h2>
+
+        <router-link :to="{ name: 'ThemeOne'}">Theme One</router-link>
     </div>
 </template>
 
@@ -19,28 +20,13 @@
         mounted() {
         },
         computed: {
-            ...mapGetters(['helloGet'])
         }
     }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-    h1, h2 {
-        font-weight: normal;
-    }
-
-    ul {
-        list-style-type: none;
-        padding: 0;
-    }
-
-    li {
-        display: inline-block;
-        margin: 0 10px;
-    }
-
-    a {
-        color: #42b983;
+    div {
+        background: #000;
+        color: #fff;
+        height: 100vh;
     }
 </style>

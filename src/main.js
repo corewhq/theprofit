@@ -5,9 +5,13 @@ import App from './App'
 import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+import 'vue2-animate/dist/vue2-animate.min.css';
 import Axios from 'axios'
 import vars from './vars'
-import store from './store/'
+import store from './store/';
+import Transitions from 'vue2-transitions'
+Vue.use(Transitions)
+
 
 Vue.config.productionTip = true;
 

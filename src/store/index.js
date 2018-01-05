@@ -1,13 +1,15 @@
 import Vuex from 'vuex'
 import Vue from 'vue'
+import stuff from './stuff';
+
 Vue.use(Vuex);
 
 
 const state = {
-    hello: 'hello world state'
+    stuff: stuff
 };
 const getters = {
-    helloGet: state => state.hello
+    stuffGet: state => state.stuff
 };
 const actions = {};
 const mutations = {};
