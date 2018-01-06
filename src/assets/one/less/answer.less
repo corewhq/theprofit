@@ -66,6 +66,10 @@
         }
         .body {
             padding: 15px;
+            .border {
+                border-bottom: 1px solid @default-border-color;
+                margin-top: 30px;
+            }
             .score-display {
                 margin-top: 20px;
                 display: inline-block;
@@ -144,7 +148,57 @@
                     line-height: 26px;
                 }
             }
+            .select {
+                .mint-cell {
+                    background: transparent;
+                    .mint-cell-wrapper {
+                        margin-right: 15px;
+                        background: none;
+                        text-align: left;
+                        padding: 0;
+                        line-height: 18px;
+                        .mint-checkbox-core {
+                            background: transparent;
+                            border: 2px solid @default-border-color;
+                            width: 32px;
+                            height: 32px;
+                            &::after {
+                                top: 6px;
+                                left: 11px;
+                                position: absolute;
+                                width: 6px;
+                                height: 13px;
+                            }
+                        }
+                        .mint-checklist-label {
+                            display: flex;
+                            .mint-checkbox-label {
+                                vertical-align: middle;
+                                margin-left: 16px;
+                                width: 100%;
+                                background: transparent;
+                                border: 2px solid @default-border-color;
+                                color: #fff;
+                                border-radius: 20px;
+                                font-size: 14px;
+                                padding-top: 7px;
+                                padding-left: 15px;
+                                padding-bottom: 5px;
+                            }
+                            .mint-checkbox-input:checked + .mint-checkbox-core {
+                                background: @primary-color;
+                                border-color: @primary-border-color;
+                            }
 
+                            &.checked .mint-checkbox-label {
+                                background: @primary-color;
+                                border-color: @primary-border-color;
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
+
 }
