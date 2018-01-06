@@ -1,29 +1,65 @@
 @charset "UTF-8";
+@import "./answer";
+@import (css) "//at.alicdn.com/t/font_532768_63fn6c2e9rpe3ik9.css";
+
 @primary-color: #48A2FF;
 @primary-border-color: #3D8CDE;
-.main {
-    background-image: url('../img/bg.jpg');
-    min-height: 100vh;
+body::before{
+    content: ' ';
+    position: fixed;
+    z-index: -1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: url('../img/bg.jpg') no-repeat ;
+    background-size: cover;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
 }
-
+.main {
+    min-height: 100vh;
+    color: #fff;
+    overflow: visible;
+}
+.left {
+    float: left;
+}
+.right {
+    float: right;
+}
 .router-view {
-    transition: all .5s cubic-bezier(.55, 0, .1, 1);
-    position: absolute;
-    width: 100%;
-
+    //transition: all .5s cubic-bezier(.55, 0, .1, 1);
+    //position: absolute;
+    //width: 100%;
 }
 
 .mar-top {
     margin-top: 10px;
 }
+.clearfix {
+    clear: both;
+}
 
-.el-button {
-    &.el-button--primary {
+.mint-button {
+    font-size: 14px;
+    &.mint-button--primary {
         border-radius: 4px;
         background-color: @primary-color;
         border: 3px solid @primary-border-color;
     }
-    border: 3px solid @primary-border-color;
+    &.mint-button--default {
+        background-color: #686868;
+        border: 3px solid #3c3c3c;
+        color: #fff;
+    }
+}
+.action-btns {
+    margin-top: 30px;
+    .mint-button {
+        width: 45%;
+        border-radius: 30px;
+    }
 }
 
 div.begin-main {
@@ -48,7 +84,7 @@ div.begin-main {
     div.border {
         border-bottom: 1px solid #fff;
         width: 35px;
-        margin-top: -5px;
+        margin-top: -3px;
         &.left {
             float: left;
         }
@@ -83,3 +119,5 @@ div.begin-main {
     -webkit-transform: translate(-100%, 0);
     transform: translate(-100% 0);
 }
+
+

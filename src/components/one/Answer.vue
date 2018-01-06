@@ -1,26 +1,33 @@
 <template>
-    <div>
-        <h1>答题</h1>
-        <div class="with-line">
-            <div class="desc">
-                共计32题
-            </div>
-            <div class="border left"></div>
-            <div class="border right"></div>
-            <div class="clearfix"></div>
-            <el-button @click="$router.go(-1)">返回</el-button>
+    <div class="answer">
+        <mt-range
+            class="progress"
+            v-model="rangeValue"
+            :min="10"
+            :max="90"
+            :step="10"
+            :bar-height="5">
+            <span>
+                {{rangeValue}}%
+            </span>
+        </mt-range>
+        <div class="site-title">
+            满意吧餐厅-餐后满意度
         </div>
+        <score-answer></score-answer>
     </div>
 </template>
 <script>
+    import ScoreAnswer from './partial/ScoreAnswer'
     import {mapGetters} from 'vuex';
 
     export default {
+        components: {
+            ScoreAnswer
+        },
         data(){
             return {
-                vuegConfig:{
-                    disable: false
-                }
+                rangeValue: 50
             }
         },
         computed: {

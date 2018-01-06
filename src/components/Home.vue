@@ -25,7 +25,6 @@
 </script>
 <style scoped>
     div {
-        background: #000;
         color: #fff;
         height: 100vh;
     }

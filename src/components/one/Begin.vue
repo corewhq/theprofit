@@ -15,23 +15,26 @@
         <p class="welcome">
             {{stuffGet.welcome}}
         </p>
-        <el-button type="primary" class="btn-begin" @click="beginAnswer">
+        <mt-button type="primary" class="btn-begin" @click="beginAnswer">
             开始作答
-            <i class="el-icon-arrow-right el-icon--right"></i>
-        </el-button>
+            <i class="iconfont icon-more"></i>
+        </mt-button>
     </div>
 </template>
 <script>
     import {mapGetters} from 'vuex';
 
+
     export default {
+        components: {
+        },
         computed: {
             ...mapGetters([
                 'stuffGet'
             ])
         },
         methods: {
-            beginAnswer(){
+            beginAnswer() {
                 this.$router.push('Answer')
             }
         }

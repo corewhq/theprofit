@@ -11,7 +11,8 @@
   },
   "dependencies": {
     "axios": "^0.17.1",
-    "element-ui": "^2.0.10",
+    "lodash": "^4.17.4",
+    "mint-ui": "file:src/mint-ui",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
     "vue2-animate": "^1.0.4",
