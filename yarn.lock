@@ -59,6 +59,10 @@ alphanum-sort@^1.0.1, alphanum-sort@^1.0.2:
   version "1.0.2"
   resolved "http://registry.npm.taobao.org/alphanum-sort/download/alphanum-sort-1.0.2.tgz#97a1119649b211ad33691d9f9f486a8ec9fbe0a3"
 
+animate.css@^3.5.2:
+  version "3.5.2"
+  resolved "http://registry.npm.taobao.org/animate.css/download/animate.css-3.5.2.tgz#91e668dc069a808e5e499514867b97aae0166c36"
+
 ansi-html@0.0.7:
   version "0.0.7"
   resolved "http://registry.npm.taobao.org/ansi-html/download/ansi-html-0.0.7.tgz#813584021962a9e9e6fd039f940d12f56ca7859e"
@@ -5005,6 +5009,10 @@ uuid@^3.0.0:
   version "3.1.0"
   resolved "http://registry.npm.taobao.org/uuid/download/uuid-3.1.0.tgz#3dd3d3e790abc24d7b0d3a034ffababe28ebbc04"
 
+v-animate-css@^0.0.2:
+  version "0.0.2"
+  resolved "http://registry.npm.taobao.org/v-animate-css/download/v-animate-css-0.0.2.tgz#61f233b641de5ab544ab50bc5450c747030e3bde"
+
 validate-npm-package-license@^3.0.1:
   version "3.0.1"
   resolved "http://registry.npm.taobao.org/validate-npm-package-license/download/validate-npm-package-license-3.0.1.tgz#2804babe712ad3379459acfbe24746ab2c303fbc"
@@ -5082,21 +5090,13 @@ vue-template-es2015-compiler@^1.6.0:
   version "1.6.0"
   resolved "http://registry.npm.taobao.org/vue-template-es2015-compiler/download/vue-template-es2015-compiler-1.6.0.tgz#dc42697133302ce3017524356a6c61b7b69b4a18"
 
-vue2-animate@^1.0.4:
-  version "1.0.4"
-  resolved "http://registry.npm.taobao.org/vue2-animate/download/vue2-animate-1.0.4.tgz#23fd1ee4ef2e25672f6a84a3363f306160f38032"
-
-vue2-transitions@^0.2.0:
-  version "0.2.0"
-  resolved "http://registry.npm.taobao.org/vue2-transitions/download/vue2-transitions-0.2.0.tgz#fa547d29926bb51ef4c2c63045649fc9452f05a7"
+vue2-transitions@^0.2.2:
+  version "0.2.2"
+  resolved "http://registry.npm.taobao.org/vue2-transitions/download/vue2-transitions-0.2.2.tgz#66bbee64852eb792c396d3061cb435a9fae54a47"
 
 vue@^2.5.2:
   version "2.5.13"
   resolved "http://registry.npm.taobao.org/vue/download/vue-2.5.13.tgz#95bd31e20efcf7a7f39239c9aa6787ce8cf578e1"
-
-vueg@^1.2.9:
-  version "1.2.9"
-  resolved "http://registry.npm.taobao.org/vueg/download/vueg-1.2.9.tgz#e4ba563a123c75d511cc4412232887411fdb7766"
 
 vuex@^3.0.1:
   version "3.0.1"

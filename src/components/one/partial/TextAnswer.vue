@@ -6,11 +6,7 @@
                 您在消费过程中，是否遇到下面情况？
             </div>
             <div class="body">
-                <mt-checklist
-                    class="select"
-                    v-model="value"
-                    :options="options">
-                </mt-checklist>
+                <textarea class="textarea" placeholder="请在此输入您的文本内容"></textarea>
                 <div class="border"></div>
                 <div class="action-btns">
                     <mt-button type="default" class="left" @click="prevClick">
@@ -29,6 +25,7 @@
 <script>
     import $ from "jquery";
     import AnswerHeader from './AnswerHeader';
+
     export default {
         components: {
             AnswerHeader
@@ -36,7 +33,7 @@
         name: 'SelectAnswer',
         data() {
             return {
-                value: [],
+                value: '',
                 options: [
                     '未招呼领座', '未及时送菜', '未倒水', '为准备好餐具', '未及时送菜单'
                 ]
@@ -50,15 +47,17 @@
         },
         watch: {
             value() {
-                $('.mint-checklist-label').removeClass('checked');
-                $('input.mint-checkbox-input:checked').closest('.mint-checklist-label').addClass('checked')
+                console.log(this.value)
+                $('.mint-radiolist-label').removeClass('checked');
+                console.log($('input.mint-radio-input:checked').length)
+                $('input.mint-radio-input[value="' + this.value + '"]').closest('.mint-radiolist-label').addClass('checked')
             }
         },
-        methods:{
-            nextClick(){
+        methods: {
+            nextClick() {
                 this.$emit('next-click')
             },
-            prevClick(){
+            prevClick() {
                 this.$emit('prev-click')
             }
         }

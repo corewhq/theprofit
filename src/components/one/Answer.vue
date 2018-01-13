@@ -1,36 +1,36 @@
 <template>
     <div class="answer">
-        <mt-range
-            class="progress"
-            v-model="rangeValue"
-            :min="10"
-            :max="90"
-            :step="10"
-            :bar-height="5">
-            <span>
-                {{rangeValue}}%
-            </span>
-        </mt-range>
-        <div class="site-title">
-            满意吧餐厅-餐后满意度
-        </div>
         <!--<score-answer></score-answer>-->
-        <select-answer></select-answer>
+        <div v-for="(q, index) in stuffGet.questions" v-if="index == currentIndex">
+            <component v-bind:is="q.type + 'Answer'"
+                       :question="q"
+                       @next-click="nextClick(q, index)"
+                       @prev-click="prevClick(q, index)"></component>
+        </div>
     </div>
 </template>
 <script>
-    import ScoreAnswer from './partial/ScoreAnswer'
-    import SelectAnswer from './partial/SelectAnswer'
-    import {mapGetters} from 'vuex';
+    import {FadeTransition} from 'vue2-transitions'
+    import ScoreAnswer from './partial/ScoreAnswer';
+    import SelectAnswer from './partial/SelectAnswer';
+    import RadioAnswer from './partial/RadioAnswer';
+    import TextAnswer from './partial/TextAnswer';
+    import {mapGetters, mapActions} from 'vuex';
+    import {Toast} from 'mint-ui';
 
     export default {
         components: {
             ScoreAnswer,
-            SelectAnswer
+            SelectAnswer,
+            RadioAnswer,
+            TextAnswer,
+            FadeTransition
         },
-        data(){
+        data() {
             return {
-                rangeValue: 50
+                currentIndex: 0,
+                rangeValue: 50,
+                answerView: ''
             }
         },
         computed: {
@@ -39,8 +39,24 @@
             ])
         },
         methods: {
-            beginAnswer() {
-                this.$router.push('Answer')
+            ...mapActions([
+                'pushStep'
+            ]),
+            nextClick() {
+                if (this.currentIndex === this.stuffGet.questions.length - 1) {
+                    Toast('已到第一页');
+                    return false;
+                }
+                this.currentIndex = this.currentIndex + 1;
+                this.pushStep(this.currentIndex + 1);
+            },
+            prevClick() {
+                if (this.currentIndex === 0) {
+                    Toast('已到最后一页');
+                    return false;
+                }
+                this.currentIndex = this.currentIndex - 1;
+                this.pushStep(this.currentIndex + 1);
             }
         }
     }

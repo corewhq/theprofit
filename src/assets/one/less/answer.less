@@ -6,7 +6,7 @@
         margin-top: 10px;
     }
     .progress {
-        margin: 0 35px;
+        margin: 0 25px;
         .mt-range-progress {
             position: absolute;
             display: block;
@@ -16,8 +16,13 @@
             transform: translateY(-50%);
             width: 0;
         }
+        .mt-range-content {
+            margin-right: 0px;
+        }
+
         .mt-range-runway {
             border-top-color: rgba(255, 255, 255, .15);
+            right: 0;
         }
         .mt-range-thumb {
             width: 12px;
@@ -148,7 +153,18 @@
                     line-height: 26px;
                 }
             }
-            .select {
+            .textarea {
+                border: 1px solid @primary-border-color;
+                background: transparent;
+                border-radius: 4px;
+                width: 100%;
+                padding: 12px;
+                min-height: 250px;
+                box-sizing: border-box;
+                font-size: 14px;
+                color: #e9e9e9;
+            }
+            .select, .radio {
                 .mint-cell {
                     background: transparent;
                     .mint-cell-wrapper {
@@ -156,41 +172,49 @@
                         background: none;
                         text-align: left;
                         padding: 0;
-                        line-height: 18px;
-                        .mint-checkbox-core {
+                        line-height: 32px;
+                        .mint-checkbox-core, .mint-radio-core {
                             background: transparent;
+                            box-sizing: border-box;
                             border: 2px solid @default-border-color;
-                            width: 32px;
-                            height: 32px;
+                            width: 36px;
+                            height: 36px;
                             &::after {
-                                top: 6px;
-                                left: 11px;
+                                top: 7px;
+                                left: 12px;
                                 position: absolute;
                                 width: 6px;
                                 height: 13px;
                             }
                         }
-                        .mint-checklist-label {
+                        .mint-radio-core::after{
+                            top: 10px;
+                            left: 10px;
+                            height: 12px;
+                            width: 12px;
+                        }
+                        .mint-checklist-label, .mint-radiolist-label {
                             display: flex;
-                            .mint-checkbox-label {
+                            .mint-checkbox-label, .mint-radio-label {
                                 vertical-align: middle;
                                 margin-left: 16px;
                                 width: 100%;
+                                height: 32px;
                                 background: transparent;
                                 border: 2px solid @default-border-color;
                                 color: #fff;
                                 border-radius: 20px;
                                 font-size: 14px;
-                                padding-top: 7px;
+                                padding-top: 0px;
                                 padding-left: 15px;
-                                padding-bottom: 5px;
+                                padding-bottom: 0px;
                             }
-                            .mint-checkbox-input:checked + .mint-checkbox-core {
+                            .mint-checkbox-input:checked + .mint-checkbox-core, .mint-radio-input:checked + .mint-radio-core {
                                 background: @primary-color;
                                 border-color: @primary-border-color;
                             }
 
-                            &.checked .mint-checkbox-label {
+                            &.checked .mint-checkbox-label, &.checked .mint-radio-label {
                                 background: @primary-color;
                                 border-color: @primary-border-color;
                             }

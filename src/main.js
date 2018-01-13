@@ -7,9 +7,11 @@ import Axios from 'axios'
 import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
 import vars from './vars'
-import store from './store/'
+import store from './store/';
+import VAnimateCss from 'v-animate-css';
 
-Vue.use(MintUI)
+Vue.use(MintUI);
+Vue.use(VAnimateCss);
 
 Vue.config.productionTip = true;
 
