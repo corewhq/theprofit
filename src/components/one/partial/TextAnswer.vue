@@ -39,7 +39,7 @@
                 ]
             }
         },
-        prop: {
+        props: {
             question: {
                 type: Object,
                 required: true

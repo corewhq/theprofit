@@ -44,7 +44,7 @@
             ]),
             nextClick() {
                 if (this.currentIndex === this.stuffGet.questions.length - 1) {
-                    Toast('已到第一页');
+                    Toast('已到最后一页');
                     return false;
                 }
                 this.currentIndex = this.currentIndex + 1;
@@ -52,7 +52,7 @@
             },
             prevClick() {
                 if (this.currentIndex === 0) {
-                    Toast('已到最后一页');
+                    Toast('已到第一页');
                     return false;
                 }
                 this.currentIndex = this.currentIndex - 1;

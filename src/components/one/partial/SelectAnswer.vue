@@ -9,7 +9,7 @@
                 <mt-checklist
                     class="select"
                     v-model="value"
-                    :options="options">
+                    :options="question.options">
                 </mt-checklist>
                 <div class="border"></div>
                 <div class="action-btns">
@@ -36,13 +36,10 @@
         name: 'SelectAnswer',
         data() {
             return {
-                value: [],
-                options: [
-                    '未招呼领座', '未及时送菜', '未倒水', '为准备好餐具', '未及时送菜单'
-                ]
+                value: []
             }
         },
-        prop: {
+        props: {
             question: {
                 type: Object,
                 required: true
