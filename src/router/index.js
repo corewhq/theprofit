@@ -1,60 +1,63 @@
 import Vue from 'vue'
-import store from '../store';
 import Router from 'vue-router';
-import types from '../store/mutation-types';
+import store from '../store';
 
 Vue.use(Router);
 const router = new Router({
     mode: 'hash',
     routes: [
         {
-            path: '/',
+            path: '/:id',
             name: 'Home',
-            component: () => import('@/components/Home')
-        }, {
-            path: '/one',
-            name: 'ThemeOne',
-            component: () => import('@/components/one/Index'),
-            redirect: {name: 'ThemeOneBegin'},
+            component: () => import('@/components/Home'),
             children: [
                 {
-                    path: '/begin',
-                    name: 'ThemeOneBegin',
-                    meta: {
-                        index: 1
-                    },
-                    component: () => import('@/components/one/Begin')
-                },
-                {
-                    path: '/answer',
-                    name: 'Answer',
-                    meta: {
-                        index: 2
-                    },
-                    component: () => import('@/components/one/Answer')
+                    path: 'one',
+                    name: 'ThemeOne',
+                    component: () => import('@/components/one/Index'),
+                    redirect: {name: 'ThemeOneBegin'},
+                    children: [
+                        {
+                            path: 'begin',
+                            name: 'ThemeOneBegin',
+                            meta: {
+                            },
+                            component: () => import('@/components/one/Begin')
+                        },
+                        {
+                            path: 'answer',
+                            name: 'OneAnswer',
+                            meta: {
+                            },
+                            component: () => import('@/components/one/Answer')
+                        },
+                        {
+                            path: 'end',
+                            name: 'ThemeOneEnd',
+                            meta: {
+                            },
+                            component: () => import('@/components/one/End')
+                        }
+                    ]
                 }
             ]
         }
     ]
 });
-window.addEventListener("popstate", e => {
-    console.log(e);
-    this.isBack = true;
-}, false);
-
 router.beforeEach((to, from, next) => {
-    let transition = '';
-    if (this.isBack) {
-        transition = 'slide-right'
-    } else {
-        transition = 'slide-left'
+    if (to.params.id) {
+        this.a.app.$http.get(`/page/mb/${to.params.id}/answer`).then(res => {
+            store.dispatch('fetchQuestion', res.data);
+        }).catch(err => {
+            this.a.app.$toast(err)
+        })
     }
-    store.commit(types.PUSH_NAV_TRANSITION, transition);
+    console.log('To', to);
+    console.log('From', from);
     next()
 });
 
 router.afterEach((to, from) => {
-    this.isBack = false;
 });
 
 export default router;

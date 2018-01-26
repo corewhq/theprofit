@@ -9,6 +9,7 @@ import 'mint-ui/lib/style.css'
 import vars from './vars'
 import store from './store/';
 import VAnimateCss from 'v-animate-css';
+import { Toast } from 'mint-ui';
 
 Vue.use(MintUI);
 Vue.use(VAnimateCss);
@@ -18,6 +19,7 @@ Vue.config.productionTip = true;
 Vue.prototype.$http = Axios.create({
     baseURL: vars.data.baseUrl
 });
+Vue.prototype.$toast = Toast;
 
 
 /* eslint-disable no-new */

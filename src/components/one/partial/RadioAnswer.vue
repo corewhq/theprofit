@@ -13,26 +13,19 @@
                     :options="question.options">
                 </mt-radio>
                 <div class="border"></div>
-                <div class="action-btns">
-                    <mt-button type="default" class="left" @click="prevClick">
-                        <i class="iconfont icon-back"></i>
-                        返回
-                    </mt-button>
-                    <mt-button type="primary" class="right" @click="nextClick">
-                        下一题
-                        <i class="iconfont icon-more"></i>
-                    </mt-button>
-                </div>
+                <action-buttons></action-buttons>
             </div>
         </div>
     </div>
 </template>
 <script>
     import $ from "jquery";
+    import ActionButtons from './ActionButtons';
     import AnswerHeader from './AnswerHeader';
 
     export default {
         components: {
+            ActionButtons,
             AnswerHeader
         },
         name: 'SelectAnswer',

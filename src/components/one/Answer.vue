@@ -1,7 +1,7 @@
 <template>
     <div class="answer">
         <!--<score-answer></score-answer>-->
-        <div v-for="(q, index) in stuffGet.questions" v-if="index == currentIndex">
+        <div v-for="(q, index) in questionsGet" v-if="index == stepGet - 1" :key="index">
             <component v-bind:is="q.type + 'Answer'"
                        :question="q"
                        @next-click="nextClick(q, index)"
@@ -28,36 +28,20 @@
         },
         data() {
             return {
-                currentIndex: 0,
                 rangeValue: 50,
                 answerView: ''
             }
         },
         computed: {
             ...mapGetters([
-                'stuffGet'
+                'questionsGet',
+                'stepGet'
             ])
         },
         methods: {
             ...mapActions([
                 'pushStep'
-            ]),
-            nextClick() {
-                if (this.currentIndex === this.stuffGet.questions.length - 1) {
-                    Toast('已到最后一页');
-                    return false;
-                }
-                this.currentIndex = this.currentIndex + 1;
-                this.pushStep(this.currentIndex + 1);
-            },
-            prevClick() {
-                if (this.currentIndex === 0) {
-                    Toast('已到第一页');
-                    return false;
-                }
-                this.currentIndex = this.currentIndex - 1;
-                this.pushStep(this.currentIndex + 1);
-            }
+            ])
         }
     }
 </script>

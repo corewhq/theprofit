@@ -25,11 +25,11 @@
         },
         computed: {
             ...mapGetters([
-                'stuffGet',
+                'questionsGet',
                 'stepGet'
             ]),
             rangeValue() {
-                return Math.round(this.stepGet / this.stuffGet.questions.length * 100);
+                return Math.round(this.stepGet / this.questionsGet.length * 100);
             }
         },
         methods: {}

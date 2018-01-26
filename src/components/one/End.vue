@@ -3,22 +3,12 @@
         <div id="logo">
             <img src="../../assets/one/img/logo.png">
         </div>
-        <h1>{{mainDataGet.name}}</h1>
-        <div class="with-line">
-            <div class="desc">
-                共计{{questionsGet.length}}题
-            </div>
-            <div class="border left"></div>
-            <div class="border right"></div>
-            <div class="clearfix"></div>
-        </div>
+        <h1>
+            您已完成问卷调查
+        </h1>
         <p class="welcome">
-            {{mainDataGet.welcome}}
+            {{mainDataGet.endWelcome}}
         </p>
-        <mt-button type="primary" class="btn-begin" @click="beginAnswer">
-            开始作答
-            <i class="iconfont icon-more"></i>
-        </mt-button>
     </div>
 </template>
 <script>
@@ -36,8 +26,9 @@
             next(vm => {
             });
         },
-        created(){
-            console.log('获得问卷id: ', this.$route.params)
+        mounted(){
+            // 提交结果
+            this.$toast('结果已提交，感谢参与！')
         },
         computed: {
             ...mapGetters([

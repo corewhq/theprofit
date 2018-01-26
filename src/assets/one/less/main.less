@@ -1,12 +1,14 @@
 @charset "UTF-8";
 @import "./answer";
 @import (css) "//at.alicdn.com/t/font_532768_63fn6c2e9rpe3ik9.css";
-@import "~animate.css";
 
 @primary-color: #48A2FF;
 @primary-border-color: #3D8CDE;
 
 @default-border-color: #686868;
+* {
+    box-sizing: border-box;
+}
 body::before{
     content: ' ';
     position: fixed;
@@ -21,7 +23,7 @@ body::before{
     -webkit-overflow-scrolling: touch;
 }
 .main {
-    min-height: 100vh;
+    //min-height: 100vh;
     color: #fff;
     overflow: visible;
 }

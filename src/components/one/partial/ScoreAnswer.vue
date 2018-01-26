@@ -3,7 +3,7 @@
         <answer-header></answer-header>
         <div class="answer-content answer-score">
             <div class="title">
-                您对本次消费的满意程度如何？
+                {{question.groupTitle}}-{{question.title}}
             </div>
             <div class="body">
                 <div class="score-display">
@@ -13,7 +13,10 @@
                         <div class="border left"></div>
                         <div class="border right"></div>
                     </div>
-                    <img src="../../../assets/one/img/biaoqing.png" alt="">
+                    <img v-show="score <=5" src="../../../assets/one/icons/default/1.png" alt="">
+                    <img v-show="score > 5 && score <=7" src="../../../assets/one/icons/default/2.png" alt="">
+                    <img v-show="score > 7 &&score <= 9" src="../../../assets/one/icons/default/3.png" alt="">
+                    <img v-show="score == 10" src="../../../assets/one/icons/default/4.png" alt="">
                     <div class="clearfix"></div>
                 </div>
                 <div class="score-tooltip">
@@ -32,28 +35,22 @@
             </span>
                 </mt-range>
 
-                <div class="action-btns">
-                    <mt-button type="default" class="left" @click="prevClick">
-                        <i class="iconfont icon-back"></i>
-                        返回
-                    </mt-button>
-                    <mt-button type="primary" class="right" @click="nextClick">
-                        下一题
-                        <i class="iconfont icon-more"></i>
-                    </mt-button>
-                </div>
+                <action-buttons></action-buttons>
             </div>
         </div>
     </div>
 </template>
 <script>
     import AnswerHeader from './AnswerHeader';
+    import ActionButtons from './ActionButtons';
+
     export default {
         components: {
-            AnswerHeader
+            AnswerHeader,
+            ActionButtons
         },
         name: 'ScoreAnswer',
-        data(){
+        data() {
             return {
                 score: null
             }
@@ -65,10 +62,10 @@
             }
         },
         methods: {
-            nextClick(){
+            nextClick() {
                 this.$emit('next-click')
             },
-            prevClick(){
+            prevClick() {
                 this.$emit('prev-click')
             }
         }

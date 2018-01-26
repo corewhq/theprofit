@@ -29,7 +29,13 @@ module.exports = {
 
         // https://webpack.js.org/configuration/devtool/#development
         devtool: 'cheap-module-eval-source-map',
-
+        //设置代理
+        proxyTable: {
+            '/page/mb/*': {
+                target: 'http://192.168.1.132:8082',
+                secure: false
+            }
+        },
         // If you have problems debugging vue-files in devtools,
         // set this to false - it *may* help
         // https://vue-loader.vuejs.org/en/options.html#cachebusting

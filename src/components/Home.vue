@@ -1,11 +1,6 @@
 <template>
     <div>
-        <h3>Theme list</h3>
-        <ul>
-            <li>
-                <router-link :to="{ name: 'ThemeOne'}">Theme One</router-link>
-            </li>
-        </ul>
+        <router-view class="router-view"></router-view>
     </div>
 </template>
 
@@ -15,13 +10,15 @@
     export default {
         name: 'HelloWorld',
         data() {
-            return {
-            }
+            return {}
+        },
+        beforeRouteEnter(to, from, next) {
+            next(vm => {
+            })
         },
         mounted() {
         },
-        computed: {
-        }
+        computed: {}
     }
 </script>
 <style scoped>
