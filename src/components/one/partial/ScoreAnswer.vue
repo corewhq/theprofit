@@ -3,7 +3,7 @@
         <answer-header></answer-header>
         <div class="answer-content answer-score">
             <div class="title">
-                {{question.groupTitle}}-{{question.title}}
+                {{question.title}}
             </div>
             <div class="body">
                 <div class="score-display">
@@ -20,7 +20,18 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="score-tooltip">
-                    非常喜欢
+                    <span  v-show="score <=5">
+                        不满意
+                    </span>
+                    <span v-show="score > 5 && score <=7">
+                        一般
+                    </span>
+                    <span v-show="score > 7 &&score <= 9">
+                        满意
+                    </span>
+                    <span v-show="score == 10">
+                        非常满意
+                    </span>
                 </div>
 
                 <mt-range

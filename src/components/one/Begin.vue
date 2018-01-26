@@ -48,7 +48,8 @@
         methods: {
             beginAnswer() {
                 this.$router.push({
-                    name: 'OneAnswer'
+                    name: 'OneAnswer',
+                    query: this.$route.query
                 })
             }
         }

@@ -9,6 +9,9 @@
         <p class="welcome">
             {{mainDataGet.endWelcome}}
         </p>
+        <div class="footer">
+            技术支持@满意吧
+        </div>
     </div>
 </template>
 <script>

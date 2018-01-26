@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router';
 import store from '../store';
+import http from 'axios';
 
 Vue.use(Router);
 const router = new Router({
@@ -20,22 +21,19 @@ const router = new Router({
                         {
                             path: 'begin',
                             name: 'ThemeOneBegin',
-                            meta: {
-                            },
+                            meta: {},
                             component: () => import('@/components/one/Begin')
                         },
                         {
                             path: 'answer',
                             name: 'OneAnswer',
-                            meta: {
-                            },
+                            meta: {},
                             component: () => import('@/components/one/Answer')
                         },
                         {
                             path: 'end',
                             name: 'ThemeOneEnd',
-                            meta: {
-                            },
+                            meta: {},
                             component: () => import('@/components/one/End')
                         }
                     ]
@@ -45,11 +43,15 @@ const router = new Router({
     ]
 });
 router.beforeEach((to, from, next) => {
+    // && (!store.state.mainData.questions || store.state.mainData.questions.length == 0)
     if (to.params.id) {
-        this.a.app.$http.get(`/page/mb/${to.params.id}/answer`).then(res => {
+        http.get(`/page/mb/${to.params.id}/answer`, {
+            params: {
+                release: to.query.release
+            }
+        }).then(res => {
             store.dispatch('fetchQuestion', res.data);
         }).catch(err => {
-            this.a.app.$toast(err)
         })
     }
     console.log('To', to);
