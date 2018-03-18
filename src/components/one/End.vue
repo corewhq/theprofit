@@ -1,7 +1,7 @@
 <template>
     <div class="begin-main" v-if="mainDataGet">
         <div id="logo">
-            <img src="../../assets/one/img/logo.png">
+            <img :src="'/page/mb/'+ $route.params.id +'/answer/logo'">
         </div>
         <h1>
             您已完成问卷调查
