@@ -31,6 +31,10 @@ module.exports = {
         devtool: 'cheap-module-eval-source-map',
         //设置代理
         proxyTable: {
+            '/page/mb': {
+                target: 'http://localhost:8082',
+                secure: false
+            },
             '/api': {
                 target: 'http://localhost:8082',
                 secure: false
