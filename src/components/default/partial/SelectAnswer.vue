@@ -12,7 +12,7 @@
                     :options="question.options">
                 </mt-checklist>
                 <div class="border"></div>
-                <action-buttons></action-buttons>
+                <action-buttons :question="question" @nextClick="nextClick"></action-buttons>
             </div>
         </div>
     </div>
@@ -21,6 +21,8 @@
     import $ from "jquery";
     import AnswerHeader from './AnswerHeader';
     import ActionButtons from './ActionButtons';
+    import {mapGetters, mapActions} from 'vuex';
+    import _indexOf from 'lodash/indexOf';
 
     export default {
         components: {
@@ -45,12 +47,22 @@
                 $('input.mint-checkbox-input:checked').closest('.mint-checklist-label').addClass('checked')
             }
         },
-        methods:{
-            nextClick(){
-                this.$emit('next-click')
-            },
-            prevClick(){
-                this.$emit('prev-click')
+        methods: {
+            ...mapActions([
+                'commitData'
+            ]),
+            nextClick() {
+                console.log(this.question);
+                for (let obj of this.question.options) {
+                    this.commitData({
+                        questionId: obj.optionId,
+                        groupId: this.question.groupId,
+                        groupTitle: this.question.title,
+                        title: obj.label,
+                        type: this.question.originalType,
+                        value: _indexOf(this.value, obj.optionId) > -1
+                    });
+                }
             }
         }
     }

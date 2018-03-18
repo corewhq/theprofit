@@ -1,16 +1,13 @@
 <template>
     <div class="answer">
         <!--<score-answer></score-answer>-->
-        <div v-for="(q, index) in questionsGet" v-if="index == stepGet - 1" :key="index">
+        <div v-for="(q, index) in questionsGet" v-show="index == stepGet - 1" :key="index">
             <component v-bind:is="q.type + 'Answer'"
-                       :question="q"
-                       @next-click="nextClick(q, index)"
-                       @prev-click="prevClick(q, index)"></component>
+                       :question="q"></component>
         </div>
     </div>
 </template>
 <script>
-    import {FadeTransition} from 'vue2-transitions'
     import ScoreAnswer from './partial/ScoreAnswer';
     import SelectAnswer from './partial/SelectAnswer';
     import RadioAnswer from './partial/RadioAnswer';
@@ -23,8 +20,7 @@
             ScoreAnswer,
             SelectAnswer,
             RadioAnswer,
-            TextAnswer,
-            FadeTransition
+            TextAnswer
         },
         data() {
             return {

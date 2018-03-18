@@ -8,33 +8,40 @@ const router = new Router({
     mode: 'hash',
     routes: [
         {
+            path: '/',
+            name: 'Index',
+            component: () => import('@/components/Index')
+        },
+        {
             path: '/:id',
             name: 'Home',
             component: () => import('@/components/Home'),
             children: [
                 {
-                    path: 'one',
-                    name: 'ThemeOne',
-                    component: () => import('@/components/one/Index'),
-                    redirect: {name: 'ThemeOneBegin'},
+                    path: 'default',
+                    name: 'ThemeDefault',
+                    component: () => import('@/components/default/Index'),
+                    redirect: {
+                        name: 'ThemeDefaultBegin'
+                    },
                     children: [
                         {
                             path: 'begin',
-                            name: 'ThemeOneBegin',
+                            name: 'ThemeDefaultBegin',
                             meta: {},
-                            component: () => import('@/components/one/Begin')
+                            component: () => import('@/components/default/Begin')
                         },
                         {
                             path: 'answer',
-                            name: 'OneAnswer',
+                            name: 'ThemeDefaultAnswer',
                             meta: {},
-                            component: () => import('@/components/one/Answer')
+                            component: () => import('@/components/default/Answer')
                         },
                         {
                             path: 'end',
-                            name: 'ThemeOneEnd',
+                            name: 'ThemeDefaultEnd',
                             meta: {},
-                            component: () => import('@/components/one/End')
+                            component: () => import('@/components/default/End')
                         }
                     ]
                 }
@@ -50,6 +57,7 @@ router.beforeEach((to, from, next) => {
                 release: to.query.release
             }
         }).then(res => {
+            console.log('questions', res.data);
             store.dispatch('fetchQuestion', res.data);
         }).catch(err => {
         })

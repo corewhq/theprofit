@@ -16,13 +16,21 @@
     import {mapGetters, mapActions} from 'vuex';
 
     export default {
+        name: "ActionButtions",
         computed: {
             ...mapGetters([
                 'stepGet',
+                'commitDataGet',
                 'questionsGet'
             ]),
             isEnd(){
                 return this.stepGet === this.questionsGet.length
+            }
+        },
+        props: {
+            question: {
+                type: Object,
+                required: true
             }
         },
         methods: {
@@ -30,9 +38,12 @@
                 'pushStep'
             ]),
             nextClick() {
+                this.$emit('nextClick');
                 if (this.isEnd) {
-                    this.$router.push({
-                        name: 'ThemeOneEnd'
+                    this.$http.post('/page/mb/' + this.$route.params.id + '/answer/commit', this.commitDataGet).then(res => {
+                        this.$router.push({
+                            name: 'ThemeDefaultEnd'
+                        });
                     });
                     return false;
                 }

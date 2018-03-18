@@ -4,8 +4,6 @@
     </div>
 </template>
 <script>
-    import '../../assets/one/less/main.less';
-
     import {mapGetters} from 'vuex';
 
     export default {
@@ -19,6 +17,6 @@
         }
     }
 </script>
-<style>
-
+<style lang="less">
+    @import "../../assets/one/less/main.less";
 </style>

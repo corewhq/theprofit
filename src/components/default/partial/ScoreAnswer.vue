@@ -20,7 +20,7 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="score-tooltip">
-                    <span  v-show="score <=5">
+                    <span v-show="score <=5">
                         不满意
                     </span>
                     <span v-show="score > 5 && score <=7">
@@ -41,12 +41,11 @@
                     :max="10"
                     :step="1"
                     :bar-height="8">
-            <span>
-                {{score}}
-            </span>
+                    <span>
+                        {{score}}
+                    </span>
                 </mt-range>
-
-                <action-buttons></action-buttons>
+                <action-buttons :question="question" @nextClick="nextClick"></action-buttons>
             </div>
         </div>
     </div>
@@ -54,6 +53,7 @@
 <script>
     import AnswerHeader from './AnswerHeader';
     import ActionButtons from './ActionButtons';
+    import {mapGetters, mapActions} from 'vuex';
 
     export default {
         components: {
@@ -73,11 +73,19 @@
             }
         },
         methods: {
+            ...mapActions([
+                'commitData'
+            ]),
             nextClick() {
-                this.$emit('next-click')
-            },
-            prevClick() {
-                this.$emit('prev-click')
+                console.log(this.question);
+                this.commitData({
+                    questionId: this.question.questionId,
+                    groupId: this.question.groupId,
+                    groupTitle: this.question.groupTitle,
+                    title: this.question.title,
+                    type: this.question.originalType,
+                    value: this.score
+                })
             }
         }
     }

@@ -1,6 +1,8 @@
 import Vuex from 'vuex'
 import Vue from 'vue'
 import types from './mutation-types';
+import _find from 'lodash/find'
+import _filter from 'lodash/filter'
 
 Vue.use(Vuex);
 
@@ -11,6 +13,9 @@ const state = {
     navChain: {
         from: '',
         transition: ''
+    },
+    commitData: {
+        answers: []
     }
 };
 const getters = {
@@ -19,7 +24,8 @@ const getters = {
     questionsGet: state => state.mainData.questions ? state.mainData.questions : [],
     routeTransitionGet: state => state.navChain.transition,
     routeFromGet: state => state.navChain.from,
-    stepGet: state => state.step
+    stepGet: state => state.step,
+    commitDataGet: state => state.commitData
 };
 const actions = {
     pushNavFrom({commit}, from) {
@@ -34,7 +40,10 @@ const actions = {
     fetchQuestion({commit}, mainData) {
         commit(types.FETCH_QUESTION, mainData);
     },
-    navigate({commit}, mainData){
+    commitData({commit}, answer) {
+        commit(types.COMMIT_DATA, answer);
+    },
+    navigate({commit}, mainData) {
 
     }
 };
@@ -50,6 +59,13 @@ const mutations = {
     },
     [types.FETCH_QUESTION](state, mainData) {
         state.mainData = mainData;
+    },
+    [types.COMMIT_DATA](state, data) {
+        let answer = _find(state.commitData.answers, {questionId: data.questionId});
+        if (answer) {
+            state.commitData.answers = _filter(state.commitData.answers, o => o.questionId != data.questionId);
+        }
+        state.commitData.answers.push(data);
     }
 };
 
