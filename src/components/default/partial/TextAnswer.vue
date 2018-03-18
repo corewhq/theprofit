@@ -6,7 +6,7 @@
                 {{question.title}}
             </div>
             <div class="body">
-                <textarea class="textarea" placeholder="请在此输入您的文本内容"></textarea>
+                <textarea class="textarea" v-model="value" placeholder="请在此输入您的文本内容"></textarea>
                 <div class="border"></div>
                 <action-buttons :question="question" @nextClick="nextClick"></action-buttons>
             </div>
@@ -27,22 +27,13 @@
         name: 'SelectAnswer',
         data() {
             return {
-                value: '',
-                options: [
-                    '未招呼领座', '未及时送菜', '未倒水', '为准备好餐具', '未及时送菜单'
-                ]
+                value: ''
             }
         },
         props: {
             question: {
                 type: Object,
                 required: true
-            }
-        },
-        watch: {
-            value() {
-                $('.mint-radiolist-label').removeClass('checked');
-                $('input.mint-radio-input[value="' + this.value + '"]').closest('.mint-radiolist-label').addClass('checked')
             }
         },
         methods: {

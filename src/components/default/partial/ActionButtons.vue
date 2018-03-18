@@ -23,7 +23,7 @@
                 'commitDataGet',
                 'questionsGet'
             ]),
-            isEnd(){
+            isEnd() {
                 return this.stepGet === this.questionsGet.length
             }
         },
@@ -40,11 +40,17 @@
             nextClick() {
                 this.$emit('nextClick');
                 if (this.isEnd) {
-                    this.$http.post('/page/mb/' + this.$route.params.id + '/answer/commit', this.commitDataGet).then(res => {
+                    if (!this.$route.query.preview) {
+                        this.$http.post('/page/mb/' + this.$route.params.id + '/answer/commit', this.commitDataGet).then(res => {
+                            this.$router.push({
+                                name: 'ThemeDefaultEnd'
+                            });
+                        });
+                    }else{
                         this.$router.push({
                             name: 'ThemeDefaultEnd'
                         });
-                    });
+                    }
                     return false;
                 }
                 this.pushStep(this.stepGet + 1);
