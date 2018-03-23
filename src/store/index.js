@@ -15,7 +15,7 @@ const state = {
         transition: ''
     },
     commitData: {
-        answers: []
+        answerItems: []
     }
 };
 const getters = {
@@ -61,11 +61,11 @@ const mutations = {
         state.mainData = mainData;
     },
     [types.COMMIT_DATA](state, data) {
-        let answer = _find(state.commitData.answers, {questionId: data.questionId});
+        let answer = _find(state.commitData.answerItems, {questionId: data.questionId});
         if (answer) {
-            state.commitData.answers = _filter(state.commitData.answers, o => o.questionId != data.questionId);
+            state.commitData.answerItems = _filter(state.commitData.answerItems, o => o.questionId != data.questionId);
         }
-        state.commitData.answers.push(data);
+        state.commitData.answerItems.push(data);
     }
 };
 

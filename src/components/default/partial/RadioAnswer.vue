@@ -13,7 +13,7 @@
                     :options="question.options">
                 </mt-radio>
                 <div class="border"></div>
-                <action-buttons :question="question" @nextClick="nextClick"></action-buttons>
+                <action-buttons :disabled="!value" :question="question" @nextClick="nextClick"></action-buttons>
             </div>
         </div>
     </div>

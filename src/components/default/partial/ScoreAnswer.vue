@@ -45,7 +45,7 @@
                         {{score}}
                     </span>
                 </mt-range>
-                <action-buttons :question="question" @nextClick="nextClick"></action-buttons>
+                <action-buttons :disabled="!score" :question="question" @nextClick="nextClick"></action-buttons>
             </div>
         </div>
     </div>

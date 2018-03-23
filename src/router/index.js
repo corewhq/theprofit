@@ -62,8 +62,6 @@ router.beforeEach((to, from, next) => {
         }).catch(err => {
         })
     }
-    console.log('To', to);
-    console.log('From', from);
     next()
 });
 

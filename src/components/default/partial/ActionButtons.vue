@@ -4,7 +4,7 @@
             <i class="iconfont icon-back"></i>
             返回
         </mt-button>
-        <mt-button type="primary" class="right" @click="nextClick">
+        <mt-button :disabled="disabled" type="primary" class="right" @click="nextClick">
             <span v-if="isEnd">提交</span>
             <span v-else>下一题</span>
             <i class="iconfont icon-more"></i>
@@ -31,6 +31,10 @@
             question: {
                 type: Object,
                 required: true
+            },
+            disabled: {
+                type: Boolean,
+                required: false
             }
         },
         methods: {

@@ -12,7 +12,7 @@
                     :options="question.options">
                 </mt-checklist>
                 <div class="border"></div>
-                <action-buttons :question="question" @nextClick="nextClick"></action-buttons>
+                <action-buttons :disabled="value.length == 0" :question="question" @nextClick="nextClick"></action-buttons>
             </div>
         </div>
     </div>

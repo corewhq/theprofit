@@ -22,7 +22,7 @@
     </div>
 </template>
 <script>
-    import {mapGetters} from 'vuex';
+    import {mapGetters, mapActions} from 'vuex';
     import $ from 'jquery';
 
 
@@ -46,7 +46,11 @@
             ])
         },
         methods: {
+            ...mapActions([
+                'pushStep'
+            ]),
             beginAnswer() {
+                this.pushStep(1);
                 this.$router.push({
                     name: 'ThemeDefaultAnswer',
                     query: this.$route.query
