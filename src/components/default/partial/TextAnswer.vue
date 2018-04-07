@@ -1,6 +1,6 @@
 <template>
     <div>
-        <answer-header></answer-header>
+        <answer-header :title="question.groupTitle"></answer-header>
         <div class="answer-content answer-select">
             <div class="title">
                 {{question.title}}

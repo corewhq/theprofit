@@ -11,7 +11,7 @@
             </span>
         </mt-range>
         <div class="site-title">
-            满意吧餐厅-餐后满意度
+            {{title}}
         </div>
     </div>
 </template>
@@ -22,6 +22,11 @@
         components: {},
         data() {
             return {}
+        },
+        props: {
+            title: {
+                type: String
+            }
         },
         computed: {
             ...mapGetters([

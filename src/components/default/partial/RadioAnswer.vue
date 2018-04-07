@@ -1,9 +1,9 @@
 <template>
     <div>
-        <answer-header></answer-header>
+        <answer-header :title="question.groupTitle"></answer-header>
         <div class="answer-content answer-select">
             <div class="title">
-                您在消费过程中，是否遇到下面情况？
+                {{question.title}}
             </div>
             <div class="body">
                 <mt-radio
