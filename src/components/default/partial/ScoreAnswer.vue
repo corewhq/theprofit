@@ -1,3 +1,22 @@
+<style scoped>
+    .btn-circle {
+        border-radius: 50%;
+        height: 40px;
+        width: 40px;
+        text-align: center;
+        padding: 0 0;
+        line-height: 34px;
+        box-sizing: border-box;
+    }
+    .btn-circle.mint-button.mint-button--default{
+        background-color: transparent;
+        border-color: #616161;
+        box-shadow: none;
+    }
+    .margin {
+        margin: 5px;
+    }
+</style>
 <template>
     <div>
         <answer-header :title="question.groupTitle"></answer-header>
@@ -34,17 +53,12 @@
                     </span>
                 </div>
 
-                <mt-range
-                    class="score"
-                    v-model="score"
-                    :min="1"
-                    :max="10"
-                    :step="1"
-                    :bar-height="8">
-                    <span>
-                        {{score}}
-                    </span>
-                </mt-range>
+                <div>
+                    <mt-button class="btn-circle margin" v-for="i in 5":type="i == score ? 'primary': 'default'"  @click="score = i">{{i}}</mt-button>
+                </div>
+                <div>
+                    <mt-button class="btn-circle margin" v-for="i in 5" :type="i + 5 == score ? 'primary': 'default'" @click="score = i + 5">{{i + 5}}</mt-button>
+                </div>
                 <action-buttons :disabled="!score" :question="question" @nextClick="nextClick"></action-buttons>
             </div>
         </div>
