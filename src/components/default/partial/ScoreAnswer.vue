@@ -54,10 +54,10 @@
                 </div>
 
                 <div>
-                    <mt-button class="btn-circle margin" v-for="i in 5":type="i == score ? 'primary': 'default'"  @click="score = i">{{i}}</mt-button>
+                    <mt-button class="btn-circle margin" v-for="i in 5" :key="i" :type="i == score ? 'primary': 'default'"  @click="score = i">{{i}}</mt-button>
                 </div>
                 <div>
-                    <mt-button class="btn-circle margin" v-for="i in 5" :type="i + 5 == score ? 'primary': 'default'" @click="score = i + 5">{{i + 5}}</mt-button>
+                    <mt-button class="btn-circle margin" v-for="i in 5" :key="i" :type="i + 5 == score ? 'primary': 'default'" @click="score = i + 5">{{i + 5}}</mt-button>
                 </div>
                 <action-buttons :disabled="!score" :question="question" @nextClick="nextClick"></action-buttons>
             </div>
