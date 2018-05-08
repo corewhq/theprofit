@@ -32,6 +32,8 @@
         beforeRouteEnter(to, from, next){
             if(to.query.zoom) {
                 $('body').css('zoom', '60%');
+                $('body').css('-moz-transform', '-moz-transform-origin');
+                $('body').css('-moz-transform', 'scale(0.6)');
             }
             next(vm => {
             });

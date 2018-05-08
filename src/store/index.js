@@ -41,6 +41,7 @@ const actions = {
         commit(types.FETCH_QUESTION, mainData);
     },
     commitData({commit}, answer) {
+        console.log(answer)
         commit(types.COMMIT_DATA, answer);
     },
     navigate({commit}, mainData) {

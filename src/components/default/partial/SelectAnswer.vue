@@ -22,7 +22,8 @@
     import AnswerHeader from './AnswerHeader';
     import ActionButtons from './ActionButtons';
     import {mapGetters, mapActions} from 'vuex';
-    import _indexOf from 'lodash/indexOf';
+    import _indexOf from 'lodash/indexOf'
+    import _find from 'lodash/find'
 
     export default {
         components: {
@@ -60,7 +61,7 @@
                         groupTitle: this.question.title,
                         title: obj.label,
                         type: this.question.originalType,
-                        value: _indexOf(this.value, obj.optionId) > -1
+                        value: _indexOf(this.value, obj.optionId) > -1 && !_find(this.value, 'none')
                     });
                 }
             }
